@@ -1,8 +1,8 @@
-{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
     {% load staticfiles %}
     {% load thumbnail %}
+    {% load render_bundle from webpack_loader %}
 
   <head>
     <meta charset="utf-8">
@@ -25,100 +25,50 @@
   </head>
 
   <body>
-
     {% block navbar %}
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'home' %}">
-            {% block navbar-brand %}
-              <img src="{% static 'img/logo.png' %}" alt="logo">
-              {% include "_brandname.html" %}
-            {% endblock %}
-          </a>
-        </div>
-        {% block navbar-menu %}
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            {% block navbar-left %}{% endblock %}
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-
-            {% block navbar-right %}
-              {% if user.is_authenticated %}
-                {% if user.is_staff %}
-                <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                {% endif %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
-                  			<img src="{% thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
-                  			{{ user.get_full_name|truncatechars:20 }}
-                  			<span class="caret"></span>
-            		    </a>
-
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="{% url 'profiles:show_self' %}">Profile</a></li>
-                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-                  </ul>
-                </li>
-              {% endif %}
-            {% endblock %}
-
-          </ul>
-          </ul>
-        </div><!--/.nav-collapse -->
-        {% endblock %}
-    </div>
+      <header class="header bg-white-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+        <nav class="f6 fw6 tracked">
+          <a class="logo link dim black dib mr3" href="#" title="">GardenHui</a>
+        </nav>
+        <nav class="f6 fw6 ttu tracked tr">
+          {% if user.is_authenticated %}
+            <a class="link dim black dib mr3" href="/me/profile">Profile</a>
+          {% else %}
+            <a class="link dim black dib mr3" href="#" title="">Login</a>
+            <a class="link dim black dib mr3" href="#" title="">Register</a>
+          {% endif %}
+        </nav>
+      </header>
     {% endblock navbar %}
 
-    {% block messages %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-{{ message.tags }}">  <!-- singular -->
-            <a class="close" data-dismiss="alert">×</a>
-            {{ message|safe }}
+    <main>
+      {% block container %}
+        <div class="container">
+          <div class="starter-template">
+            <h1>New Project</h1>
+            <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
           </div>
-        {% endfor %}
-      {% endif %}
-    {% endblock %}
-
-    {% block splash %}
-    {% endblock splash %}
-
-    {% block container %}
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>New Project</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div><!-- /.container -->
-    {% endblock container %}
+        </div><!-- /.container -->
+      {% endblock container %}
+    </main>
 
     <!-- Site footer -->
     {% block footer %}
       <!-- Some social button for contact will do -->
-      <a name="contact"></a>
-      <div class="container">
-            <div class="footer">
-        <div class="row">
-          <div class="col-lg-6">
-              <p>&copy; Company {% now 'Y' %}</p>
-          </div>
-          <div class="col-lg-6 text-right">
-            Connect with us on
-            <a href="#"><i class="fa fa-facebook"></i> Facebook</a> or
-            <a href="#"><i class="fa fa-twitter"></i> Twitter</a>
-          </div>
-        </div>
+        <footer class="bg-black-90">
+          <div class="container">
+            <div class="w-50 fl">
+              <p class='white'>&copy; Company {% now 'Y' %}</p>
             </div>
+            <div class="w-50 fl tr">
+              <p>
+                <span class="silver mr2">Connect with us on</span>
+                <a class="link white" href="#">Facebook</a> or
+                <a class="link white" href="#">Twitter</a>
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     {% endblock %}
 
@@ -126,7 +76,5 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     {% render_bundle 'main' %}
-    {% block scripts %}
-    {% endblock scripts %}
   </body>
 </html>
