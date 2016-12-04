@@ -1,0 +1,84 @@
+/*
+ * Theme Name: GardenHui
+ * Description: Theme for GardenHui
+ * Author: GardenHui
+*/
+
+@import "initcss/lib/init.css";
+@import "flickity/dist/flickity.min.css";
+@import "dropkickjs/build/css/dropkick.css";
+@import "tachyons";
+@import "config/_mixins.scss";
+@import "colors.css/src/_variables.css";
+
+@custom-media --desktop (min-width: 80em);
+@custom-media --handheld (max-width: 48em);
+
+:root {
+  --white: #EEE;
+}
+
+html {
+  background: #009688;
+
+  @media(--desktop) {
+    font-size: 18px;
+  }
+}
+
+body {
+  font-family: "PT Sans", -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
+
+
+  @media (--handheld) {
+    padding: 0 0 4em;
+  }
+
+
+  > svg {
+    position: absolute null null null -99999px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container {
+  padding: 0 1em;
+
+  &--narrow {
+    max-width: 60em;
+  }
+
+  @media (--desktop) {
+    padding: 0;
+  }
+  lost-center: 80em;
+}
+
+main {
+  min-height: calc(100vh - 2em);
+}
+
+.article__container {
+  background: --white;
+  padding: 1em 2em;
+  border-radius: 0.25em;
+  margin-top: 3em;
+}
+
+.hide-on-mobile {
+  display: inline-block;
+  @media (--handheld) {
+    display: none;
+  }
+}
+
+body.home .register__container {
+  margin-top: 5em;
+}
