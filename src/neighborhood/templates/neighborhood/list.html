@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block page-title %}neighborhood{% endblock %}
+
+{% block container %}
+    <div class="container">
+      <article>
+      <h1>Neighborhoods</h1>
+        {% for channel in  channels.channels %}
+          <p>
+            <a href="slack://channel/?id={{channel.id}}&team={{ team_info.team.id }}">{{ channel.name }} ({{ channel.num_members }})</a>
+          </p>
+        {% endfor %}
+      </article>
+    </div>
+  {% endblock %}

@@ -1,0 +1,17 @@
+.home-hero {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: {
+    image: url('http://www.gardenhui.com/wp-content/uploads/2016/07/IMG_1751-1-1440x810.jpg');
+    color: rgba(0,0,0,0.5);
+    blend-mode: overlay;
+    size: cover;
+  }
+}
+
+.home-title {
+  font-size: 5em;
+  color: white;
+}

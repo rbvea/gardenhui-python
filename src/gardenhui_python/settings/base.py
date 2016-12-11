@@ -77,9 +77,10 @@ INSTALLED_APPS = (
 
     'profiles',
     'accounts',
+    'neighborhood',
 
-    'webpack_loader'
-
+    'webpack_loader',
+    'django_common',
 )
 
 WEBPACK_LOADER = {

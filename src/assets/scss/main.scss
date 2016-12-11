@@ -10,6 +10,7 @@
 @import "tachyons";
 @import "config/_mixins.scss";
 @import "colors.css/src/_variables.css";
+@import "components/home.scss";
 
 @custom-media --desktop (min-width: 80em);
 @custom-media --handheld (max-width: 48em);
@@ -84,12 +85,7 @@ main {
   }
 }
 
-.home-hero {
-  height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .header {
   display: flex;
