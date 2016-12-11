@@ -52,6 +52,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+src/gardenhui_pyton/settings/local.env
 
 # Flask stuff:
 instance/
